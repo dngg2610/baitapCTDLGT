@@ -1,1 +1,2 @@
-# em chao co a, day la bai tap lon cua nhom chung em 
+# em chào cô ạ, đây là bài tập lớn của nhóm chúng em
+* HỆ THỐNG QUẢN LÝ QUÁN CAFE *
