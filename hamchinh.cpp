@@ -1,3 +1,91 @@
+void mainmenu() {
+    // Display the main menu and handle user choices
+    int choice;
+
+    printf("\n***** CAFE MANAGEMENT SYSTEM *****\n\n");
+    printf("1. Admin\n");
+    printf("2. Customer\n");
+    printf("3. Exit\n\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    if (choice == 1) {
+        char username[20], password[20];
+
+        printf("\nEnter username: ");
+        scanf("%s", username);
+        printf("Enter password: ");
+        scanf("%s", password);
+
+        if (strcmp(username, "admin") == 0 && strcmp(password, "admin@cafe") == 0) {
+            int choice1;
+
+            while (1) {
+                adminmenu();
+                printf("Enter your choice: ");
+                scanf("%d", &choice1);
+
+                switch (choice1) {
+                    case 1:
+                        // Calculate, display total sales
+                        printf("\nTotal Sales: VND. %.2f\n", calculateTotalBill());
+                        break;
+                    case 2: {
+                        int data;
+                        char drinkname[50];
+                        float price;
+
+                        printf("\nEnter drink ID: ");
+                        scanf("%d", &data);
+                        printf("Enter drink name: ");
+                        scanf("%s", drinkname);
+
+                        fflush(stdin);
+                        printf("Enter price: ");
+                        scanf("%f", &price);
+
+                        heada = createadmin(heada, data, drinkname, price);
+                        printf("\nItem added to menu successfully!\n");
+                        break;
+                    }
+                    case 3: {
+                        int id;
+                        char drinkname[50];
+                        float price;
+
+                        printf("\nEnter drink ID to modify: ");
+                        scanf("%d", &id);
+                        printf("Enter drink name: ");
+                        scanf("%s", drinkname);
+                        printf("Enter price: ");
+                        scanf("%f", &price);
+
+                        updateItem(heada, id, drinkname, price);
+                        break;
+                    }
+                    case 4: {
+                        int data;
+
+                        printf("\nEnter drink ID to delete: ");
+                        scanf("%d", &data);
+
+                        heada = deleteadmin(heada, data);
+                        break;
+                    }
+                    case 5:
+                        view(heada);
+                        break;
+                    case 6:
+                        return;
+                    default:
+                        printf("\nInvalid choice! Please try again.\n");
+                        break;
+                }
+            }
+        } else {
+            printf("\nInvalid username or password!\n");
+        }
+    } 
 else if (choice == 2) {
         int choice2;
 
