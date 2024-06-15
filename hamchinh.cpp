@@ -1,3 +1,24 @@
+void adminmenu() {
+    // Display the admin menu options
+    printf("***** ADMIN MENU *****\n\n");
+    printf("1. Total Sales\n");
+    printf("2. Add Item\n");
+    printf("3. Update Item\n");
+    printf("4. Delete Item\n");
+    printf("5. View Items\n");
+    printf("6. Exit\n\n");
+}
+
+void customermenu() {
+    // Display the customer menu options
+    printf("\n***** CUSTOMER MENU *****\n\n");
+    printf("1. Order Menu\n");
+    printf("2. View Order\n");
+    printf("3. Delete Item from Order\n");
+    printf("4. Total Bill\n");
+    printf("5. Exit\n\n");
+}
+
 void mainmenu() {
     // Display the main menu and handle user choices
     int choice;
