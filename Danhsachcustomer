@@ -1,0 +1,91 @@
+struct node* createcustomer(struct node* head, int data, char drinkname[], float price) {
+    // Add a menu item to the customer's order
+    struct node* temp = (struct node*)malloc(sizeof(struct node));
+    temp->data = data;
+    strcpy(temp->drinkname, drinkname);
+    temp->price = price;
+    temp->next = NULL;
+
+    if (head == NULL) {
+        head = temp;
+    } else {
+        struct node* ptr = head;
+        while (ptr->next != NULL) {
+            ptr = ptr->next;
+        }
+        ptr->next = temp;
+    }
+
+    return head;
+}
+
+struct node* deletecustomer(struct node* head, int data) {
+    // Delete a menu item from the customer's order
+    if (head == NULL) {
+        printf("\nNo items found!\n");
+    } else {
+        struct node* prev = NULL;
+        struct node* curr = head;
+
+        while (curr != NULL && curr->data != data) {
+            prev = curr;
+            curr = curr->next;
+        }
+
+        if (curr != NULL) {
+            if (prev == NULL) {
+                head = curr->next;
+            } else {
+                prev->next = curr->next;
+            }
+            free(curr);
+            printf("\nItem deleted from order successfully!\n");
+        } else {
+            printf("\nItem not found in order!\n");
+        }
+    }
+
+    return head;
+}
+
+
+void view(struct node* head) {
+    // Display the items in a menu
+    if (head == NULL) {
+        printf("\nNo items found!\n");
+    } else {
+        printf("\nID\tdrink Name\t\tPrice\n");
+        struct node* ptr = head;
+        while (ptr != NULL) {
+            // CÄƒn lá» vÃ  cá»‘ Ä‘á»‹nh chiá»u rá»™ng cá»§a má»—i cá»™t báº±ng cÃ¡ch sá»­ dá»¥ng cÃ¡c kÃ½ tá»± khoáº£ng tráº¯ng
+            printf("%-2d\t%-20s\tVND. %.2f\n", ptr->data, ptr->drinkname, ptr->price);
+            ptr = ptr->next;
+        }
+    }
+}
+
+
+void ordermenu() {
+    // Display the menu for ordering
+    printf("\n\t\t\t\t\t\t\t***** MENU *****\n\n");
+    printf("ID\tdrink Name\t\tPrice\n");
+    struct node* ptr = heada;
+    while (ptr != NULL) {
+        printf("%-2d\t%-20s\tVND. %.2f\n", ptr->data, ptr->drinkname, ptr->price);
+        ptr = ptr->next;
+    }
+    printf("\nEnter drink ID to add to order (0 to exit): ");
+}
+
+float calculateTotalBill() {
+    // Calculate the total bill for the customer's order
+    struct node* ptr = headc;
+    float totalBill = 0.0;
+
+    while (ptr != NULL) {
+        totalBill += ptr->price;
+        ptr = ptr->next;
+    }
+
+    return totalBill;
+}
